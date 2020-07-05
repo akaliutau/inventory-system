@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DATABASE_TO_UPPER=false;
+      username: sa
+      password: 
+
+server:
+  port: 9000
+  servlet:
+    context-path: /
+  
+page:
+  size: 5
