@@ -59,7 +59,5 @@ Server will start on localhost:9000 address. One can point browser to http://loc
 
 ##### Front-end Server:
 
-- run ``npm start`` from /inventory-ui directory, this will compile the React app and automatically launch it in the browser
-
-Server will start on localhost:3000 address
+- run ``npm start`` from /inventory-ui directory, this will compile the React app and automatically launch it in the browser on the URL localhost:3000
 
