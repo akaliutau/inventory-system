@@ -10,7 +10,7 @@ Back-end has only one end-point at `` /api/v1/items``
 
 Full API Documentation for back-end server's API is available on http://localhost:9000/swagger-ui.html. Swagger UI works in the latest versions of Chrome, Safari, Firefox, and Edge.
 
-The front-end server is built using React 16 framework with Material Design styling. This is a single-page application allowing to view and navigate through all available inventory records. Database is pre-populated with 10 sample records. Page-size limit is set to 5 records/page, just to demonstrate pagination functionality.
+The front-end server is built using React 16 library with Material Design styling. This is a single-page application allowing to view and navigate through all available inventory records. Database is pre-populated with 10 sample records. Page-size limit is set to 5 records/page, just to demonstrate pagination functionality.
 
 <br/>
 
