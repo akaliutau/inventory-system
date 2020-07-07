@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import './App.css';
+import './css/App.css';
 import axios from "axios";
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from './Alert.js';
