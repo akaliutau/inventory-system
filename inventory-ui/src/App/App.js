@@ -5,7 +5,7 @@ import './css/App.css';
 import axios from "axios";
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from './Alert.js';
-import {SERVER_URL} from './constants.js';
+import {SERVER_URL} from '../_constants/constants.js';
 import {INVENTORY_COLUMNS} from './columns.js';
 import SearchAppBar from './AppBar';
 
