@@ -10,7 +10,8 @@ Back-end has only one end-point at `` /api/v1/items``
 
 Full API Documentation for back-end server's API is available on http://localhost:9000/swagger-ui.html. Swagger UI works in the latest versions of Chrome, Safari, Firefox, and Edge.
 
-The front-end server is built using React 16 library with Material Design styling. This is a single-page application allowing to view and navigate through all available inventory records. Database is pre-populated with 10 sample records. Page-size limit is set to 5 records/page, just to demonstrate pagination functionality.
+The front-end server is implemented in two variants: using React 16 library, and the second one with the help of Angular framework. Both variants styled with Material Design.
+By architecture front-end is a single-page application allowing to view and navigate through all available inventory records. Database is pre-populated with 10 sample records. Page-size limit is set to 5 records/page, just to demonstrate pagination functionality.
 
 <br/>
 
@@ -35,7 +36,9 @@ This project is organized as a typical multi-module project with the following s
 
 + <b> inventory-service </b> --  module containing source code of back-end server
 
-+ <b> inventory-ui </b> -- module containing source code of front-end server
++ <b> inventory-ui-react </b> -- module containing source code of front-end server (React 16)
+
++ <b> inventory-ui-angular </b> -- module containing source code of front-end server (Angular 9)
 
 
 
@@ -44,7 +47,10 @@ Run from the project's root directory:
 ``mvn clean package ``
 
 ##### Building Front-end Server:
-Run from /inventory-ui directory (where the package.json is located):
+Run from /inventory-ui-react directory (where the package.json is located):
+``npm install``
+
+Run from /inventory-ui-angular directory (where the package.json is located):
 ``npm install``
 
 ## Usage
@@ -59,5 +65,7 @@ Server will start on localhost:9000 address. One can point browser to http://loc
 
 ##### Front-end Server:
 
-- run ``npm start`` from /inventory-ui directory, this will compile the React app and automatically launch it in the browser on the URL localhost:3000
+- run ``npm start`` from /inventory-ui-react directory, this will compile the React app and automatically launch it in the browser on the URL [http://localhost:3000](http://localhost:3000)
+
+- run ``npm start`` from /inventory-ui-angular directory, this will compile the Angular app and automatically launch it in the browser on the URL [http://localhost:4200](http://localhost:4200)
 
