@@ -67,5 +67,5 @@ Server will start on localhost:9000 address. One can point browser to http://loc
 
 - run ``npm start`` from /inventory-ui-react directory, this will compile the React app and automatically launch it in the browser on the URL [http://localhost:3000](http://localhost:3000)
 
-- run ``npm start`` from /inventory-ui-angular directory, this will compile the Angular app and automatically launch it in the browser on the URL [http://localhost:4200](http://localhost:4200)
+- run ``npm start`` from /inventory-ui-angular directory, this will compile the Angular app, after that point your browser on the URL [http://localhost:4200](http://localhost:4200)
 
