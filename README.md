@@ -38,7 +38,7 @@ This project is organized as a typical multi-module project with the following s
 
 + <b> inventory-ui-react </b> -- module containing source code of front-end server (React 16)
 
-+ <b> inventory-ui-angular </b> -- module containing source code of front-end server (Angular 9)
++ <b> inventory-ui-angular </b> -- module containing source code of front-end server (Angular 10)
 
 
 
