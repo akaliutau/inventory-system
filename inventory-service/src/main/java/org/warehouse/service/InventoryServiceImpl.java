@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import org.warehouse.model.Item;
 import org.warehouse.repository.ItemRepository;
 
+/**
+ * An implementation of {@link InventoryService}
+ *
+ * @author Aliaksei Kaliutau
+ */
 @Service
 public class InventoryServiceImpl implements InventoryService {
 
@@ -20,7 +25,9 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public Page<Item> getAll(int page) {
-        page = page < 0 ? 0 : page;
+        if (page < 0){
+            throw new IllegalArgumentException("Page must be a non-negative number");
+        }
         Pageable p = PageRequest.of(page, pageSize);
         return itemRepository.findAll(p);
     }

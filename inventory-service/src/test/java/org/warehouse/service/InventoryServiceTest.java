@@ -19,51 +19,51 @@ import org.warehouse.model.Item;
 @ActiveProfiles("test")
 public class InventoryServiceTest {
 
-	@Autowired
-	InventoryService inventoryService;
-	
+    @Autowired
+    InventoryService inventoryService;
+
     @Before
     public void init() {
     }
-    
+
     @After
-	public void after() {
+    public void after() {
     }
 
-	@Test
-	public void testGetAll() {
-		
-		Page<Item> result = inventoryService.getAll(0);
-		
-		Assert.assertNotNull(result);
-		Assert.assertTrue(result.hasContent());
+    @Test
+    public void testGetAll() {
+
+        Page<Item> result = inventoryService.getAll(0);
+
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.hasContent());
         Assert.assertEquals(5, result.getContent().size());
-        
+
         Assert.assertEquals(0, result.getNumber());
         Assert.assertEquals(2, result.getTotalPages());
-        
-		Assert.assertTrue(result.hasNext());
-		Assert.assertFalse(result.hasPrevious());
-	}
-	
-	@Test
-	public void testGetAllNonExistingPage() {
-		
-		Page<Item> result = inventoryService.getAll(2);
-		
-		Assert.assertNotNull(result);
-		Assert.assertFalse(result.hasContent());
-	}
 
-	@Test
-	public void testGetAllWrongInput() {
+        Assert.assertTrue(result.hasNext());
+        Assert.assertFalse(result.hasPrevious());
+    }
 
-		Page<Item> result = inventoryService.getAll(-1);
-		// must return page #0
-		Assert.assertNotNull(result);
-		Assert.assertTrue(result.hasContent());
-        Assert.assertEquals(0, result.getNumber());
+    @Test
+    public void testGetAllNonExistingPage() {
 
-	}
+        Page<Item> result = inventoryService.getAll(2);
+
+        Assert.assertNotNull(result);
+        Assert.assertFalse(result.hasContent());
+    }
+
+    @Test
+    public void testGetAllWrongInput() {
+        boolean caught = false;
+        try {
+            Page<Item> result = inventoryService.getAll(-1);
+        }catch (IllegalArgumentException e){
+            caught = true;
+        }
+        Assert.assertTrue(caught);
+    }
 
 }

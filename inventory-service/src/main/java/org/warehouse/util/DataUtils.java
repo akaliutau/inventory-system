@@ -1,12 +1,11 @@
 package org.warehouse.util;
 
+import lombok.extern.slf4j.Slf4j;
+import org.warehouse.model.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import org.warehouse.model.Item;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Utility class

@@ -23,13 +23,10 @@ import org.warehouse.service.InventoryService;
 import org.warehouse.util.DataUtils;
 import org.warehouse.util.JsonUtil;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
 
 
 @RunWith(SpringRunner.class)
@@ -39,59 +36,58 @@ import static org.mockito.Mockito.times;
 @ActiveProfiles("test")
 public class InventoryControllerTest {
 
-	public static final String base = "/api/v1/items";
-	public static final String base_with_param = "/api/v1/items?page=%d";
+    public static final String base = "/api/v1/items";
+    public static final String base_with_param = "/api/v1/items?page=%d";
 
-	@InjectMocks
-	private InventoryController inventoryController;
-	
-	@MockBean
-	private InventoryService inventoryService;
+    @InjectMocks
+    private InventoryController inventoryController;
 
-	@Autowired
-	private MockMvc mockMvc;
-	
- 
-	@Test
-	public void testFindAllPage0() throws Exception {
-		Page<Item> page = getPage();
-		when(inventoryService.getAll(0)).thenReturn(page);
-		HttpHeaders httpHeaders = new HttpHeaders();
-		// Testing authentication with correct credentials
-		MvcResult res = this.mockMvc.perform(get(base).headers(httpHeaders)).andDo(print()).andExpect(status().isOk())
-				.andReturn();
+    @MockBean
+    private InventoryService inventoryService;
 
-		// check results
-		Page<Item> result = JsonUtil.fromJson(res.getResponse().getContentAsString());
-		Assert.assertNotNull(result);
-		Assert.assertFalse(result.isEmpty());
-		
-		//check the service has been called with specified argument
-		verify(inventoryService, times(1)).getAll(0);
-	}
-	
-	@Test
-	public void testFindAllPage1() throws Exception {
-		Page<Item> page = getPage();
-		when(inventoryService.getAll(1)).thenReturn(page);
-		HttpHeaders httpHeaders = new HttpHeaders();
-		// Testing authentication with correct credentials
-		MvcResult res = this.mockMvc.perform(get(String.format(base_with_param, 1)).headers(httpHeaders)).andDo(print()).andExpect(status().isOk())
-				.andReturn();
+    @Autowired
+    private MockMvc mockMvc;
 
-		// check results
-		Page<Item> result = JsonUtil.fromJson(res.getResponse().getContentAsString());
-		Assert.assertNotNull(result);
-		Assert.assertFalse(result.isEmpty());
+    private static Page<Item> getPage() {
+        Pageable p = PageRequest.of(0, 5);
+        return new PageImpl<>(DataUtils.genItems(2), p, 2);
+    }
 
-		//check the service has been called with specified argument
-		verify(inventoryService, times(1)).getAll(1);
+    @Test
+    public void testFindAllPage0() throws Exception {
+        Page<Item> page = getPage();
+        when(inventoryService.getAll(0)).thenReturn(page);
+        HttpHeaders httpHeaders = new HttpHeaders();
 
-	}
-	
-	private static Page<Item> getPage(){
-		Pageable p = PageRequest.of(0, 5);
-		return  new PageImpl<>(DataUtils.genItems(2), p, 2);
-	}
+        MvcResult res = this.mockMvc.perform(get(base).headers(httpHeaders)).andDo(print()).andExpect(status().isOk())
+                .andReturn();
+
+        // check results
+        Page<Item> result = JsonUtil.fromJson(res.getResponse().getContentAsString());
+        Assert.assertNotNull(result);
+        Assert.assertFalse(result.isEmpty());
+
+        //check the service has been called with specified argument
+        verify(inventoryService, times(1)).getAll(0);
+    }
+
+    @Test
+    public void testFindAllPage1() throws Exception {
+        Page<Item> page = getPage();
+        when(inventoryService.getAll(1)).thenReturn(page);
+        HttpHeaders httpHeaders = new HttpHeaders();
+
+        MvcResult res = this.mockMvc.perform(get(String.format(base_with_param, 1)).headers(httpHeaders)).andDo(print()).andExpect(status().isOk())
+                .andReturn();
+
+        // check results
+        Page<Item> result = JsonUtil.fromJson(res.getResponse().getContentAsString());
+        Assert.assertNotNull(result);
+        Assert.assertFalse(result.isEmpty());
+
+        //check the service has been called with specified argument
+        verify(inventoryService, times(1)).getAll(1);
+
+    }
 
 }

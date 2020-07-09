@@ -1,8 +1,7 @@
 package org.warehouse;
 
 
-import java.util.List;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +12,7 @@ import org.warehouse.model.Item;
 import org.warehouse.repository.ItemRepository;
 import org.warehouse.util.DataUtils;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 
 @Slf4j
