@@ -35,7 +35,7 @@ public class InventoryController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         Page<Item> res = inventoryService.getAll(page);
-        if (res.getTotalPages() < page) {
+        if (res.getTotalPages() - 1 < page) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.ok().body(res);
