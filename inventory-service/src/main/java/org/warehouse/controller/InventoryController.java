@@ -24,7 +24,7 @@ public class InventoryController {
 
     @ApiOperation(value = "Get all records from inventory", response = Page.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successfully retrieved records"),
-            @ApiResponse(code = 400, message = "Successfully retrieved records"),
+            @ApiResponse(code = 400, message = "Wrong input"),
             @ApiResponse(code = 404, message = "The resource is not found")})
     @GetMapping
     public ResponseEntity<Page<Item>> getAll(
