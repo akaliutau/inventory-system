@@ -14,7 +14,7 @@ export class ItemsDatasource implements DataSource<Item> {
   public loading$ = this.loadingSubject.asObservable();
   private res: Observable<Object>;
 
-  constructor(private coursesService: InventoryService) {
+  constructor(private invService: InventoryService) {
   }
 
   loadItems(pageIndex: number,
@@ -22,7 +22,7 @@ export class ItemsDatasource implements DataSource<Item> {
 
     this.loadingSubject.next(true);
 
-    this.res = this.coursesService.findItems(pageIndex, pageSize);
+    this.res = this.invService.findItems(pageIndex, pageSize);
 
     this.res
       .subscribe(page => this.pageSubject.next(<Page>page));
